@@ -1,6 +1,8 @@
 # react-native-photo-guideline-grid
 
-A simple component to display a guideline grid according to Rule of thirds
+A simple component to display a guideline grid according to Rule of thirds.
+
+![Screenshot of the guideline grid](https://raw.githubusercontent.com/bamlab/react-native-photo-guideline-grid/master/doc/screenshot.png "Screenshot of the guideline grid")
 
 ## Usage
 
