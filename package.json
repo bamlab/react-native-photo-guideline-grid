@@ -1,0 +1,26 @@
+{
+  "name": "react-native-photo-guideline-grid",
+  "version": "0.0.1",
+  "description": "A simple component to display a guideline grid according to Rule of thirds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bamlab/react-native-photo-guideline-grid.git"
+  },
+  "keywords": [
+    "photo",
+    "guideline",
+    "grid",
+    "third",
+    "rule"
+  ],
+  "author": "Florian Rival <florianr@bamlab.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bamlab/react-native-photo-guideline-grid/issues"
+  },
+  "homepage": "https://github.com/bamlab/react-native-photo-guideline-grid#readme"
+}
