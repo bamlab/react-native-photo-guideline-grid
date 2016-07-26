@@ -36,41 +36,31 @@ const absoluteFill : AbsoluteFill = {
   bottom: 0,
 };
 
-const getLinesStyle: GetLineStyle = (direction, color) => (
-  return {
-    flex: 1,
-    borderColor: color,
-    borderRightWidth: direction === 'row' ? 0 : 1,
-    borderBottomWidth: direction === 'row' ? 1 : 0,
-  }
-);
+const getLinesStyle: GetLineStyle = (direction, color) => ({
+  flex: 1,
+  borderColor: color,
+  borderRightWidth: direction === 'row' ? 0 : 1,
+  borderBottomWidth: direction === 'row' ? 1 : 0,
+});
 
 export const Lines: LinesComponent = (direction, color, subDivision) => (
-  return (
-    <View
-        style={{
-          ...absoluteFill,
-          flexDirection: direction,
-          opacity: 0.3,
-        }}
-      > 
-        {
-          Array(subDivision - 1).map(() => (
-            <View style={getLinesStyle()} />
-          ))
-        }
-        <View style={{flex: 1}} />
-      </View>
-  );
+  <View
+      style={{
+        ...absoluteFill,
+        flexDirection: direction,
+        opacity: 0.3,
+      }}
+    > 
+      {[...Array(subDivision -1)].map((x, i) => <View style={getLinesStyle()} key={i + 1}/>)}
+      <View style={{flex: 1}} />
+    </View>
 );
 
 export const PhotoGrid: PhotoGridComponent = (color: string = 'white', subDivision: number = 3) => (
-    return (
-      <View style={absoluteFill} pointerEvents="none">
-        <Lines direction="row" color={color} subDivision={subDivision} />
-        <Lines direction="column" color={color} subDivision={subDivision} />
-      </View>
-    );
+  <View style={absoluteFill} pointerEvents="none">
+    <Lines direction="row" color={color} subDivision={subDivision} />
+    <Lines direction="column" color={color} subDivision={subDivision} />
+  </View>
 )
 
 export default PhotoGrid;
