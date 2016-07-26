@@ -1,32 +1,7 @@
-/**
- *  Copyright (c) 2016 BAM
- *  This source code is licensed under the MIT license found in the
- *  LICENSE file in the root directory of this source tree.
- * 
- *  @providesModule PhotoGuidelineGuide
- *  @Flow
- * */
-
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
-type AbsoluteFill = {
-  position: string;
-  top: number;
-  left: number;
-  right: number;
-  bottom: number;
-}
-
-type BlockStyle = {
-  borderColor: string;
-  borderBottomWidth?: number;
-  borderRightWidth?: number;
-}
-
-export type Direction = 'row' | 'column';
-
-const absoluteFill : AbsoluteFill = {
+const absoluteFill = {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -34,13 +9,14 @@ const absoluteFill : AbsoluteFill = {
   bottom: 0,
 };
 
-export const Lines = (direction : Direction, color) => (
-  const blockStyle: BlockStyle = (direction === 'row')
-      ? {borderColor: color, borderRightWidth: 1}
-      : {borderColor: color, borderBottomWidth: 1};
+export default class PhotoGrid extends Component {
+  renderGrid = (direction) => {
+    const blockStyle = direction === 'row'
+      ? {borderColor: 'white', borderRightWidth: 1}
+      : {borderColor: 'white', borderBottomWidth: 1};
 
-  return (
-    <View
+    return (
+      <View
         style={{
           ...absoluteFill,
           flexDirection: direction,
@@ -51,16 +27,15 @@ export const Lines = (direction : Direction, color) => (
         <View style={[{flex: 1}, blockStyle]} />
         <View style={{flex: 1}} />
       </View>
-  );
-);
+    );
+  }
 
-export const PhotoGrid = (color: string = 'white') => (
+  render() {
     return (
       <View style={absoluteFill} pointerEvents="none">
-        <Lines direction="row" color={color} />
-        <Lines direction="column" color={color} />
+        {this.renderGrid('row')}
+        {this.renderGrid('column')}
       </View>
     );
-)
-
-export default PhotoGrid;
+  }
+}
