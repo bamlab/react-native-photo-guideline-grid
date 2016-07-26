@@ -1,6 +1,6 @@
 {
   "name": "react-native-photo-guideline-grid",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "A simple component to display a guideline grid according to Rule of thirds",
   "main": "index.js",
   "scripts": {
