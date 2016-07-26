@@ -17,14 +17,16 @@ type AbsoluteFill = {
   right: number;
   bottom: number;
 }
-
-type BlockStyle = {
+type LineStyle =  {
+  flex: number;
   borderColor: string;
-  borderBottomWidth?: number;
-  borderRightWidth?: number;
+  borderBottomWidth: number;
+  borderRightWidth: number;
 }
-
-export type Direction = 'row' | 'column';
+type Direction = 'row' | 'column';
+type GetLineStyle = (direction : Direction, color: string) => LineStyle;
+type LinesComponent = (direction : Direction, color: string) => React$Element<*>;
+type PhotoGridComponent = (color?: string) => React$Element<*>;
 
 const absoluteFill : AbsoluteFill = {
   position: 'absolute',
@@ -34,11 +36,16 @@ const absoluteFill : AbsoluteFill = {
   bottom: 0,
 };
 
-export const Lines = (direction : Direction, color) => (
-  const blockStyle: BlockStyle = (direction === 'row')
-      ? {borderColor: color, borderRightWidth: 1}
-      : {borderColor: color, borderBottomWidth: 1};
+const getLinesStyle: GetLineStyle = (direction, color) => (
+  return {
+    flex: 1,
+    borderColor: color,
+    borderRightWidth: direction === 'row' ? 0 : 1,
+    borderBottomWidth: direction === 'row' ? 1 : 0,
+  }
+);
 
+export const Lines: LinesComponent = (direction, color, subDivision) => (
   return (
     <View
         style={{
@@ -46,19 +53,22 @@ export const Lines = (direction : Direction, color) => (
           flexDirection: direction,
           opacity: 0.3,
         }}
-      >
-        <View style={[{flex: 1}, blockStyle]} />
-        <View style={[{flex: 1}, blockStyle]} />
+      > 
+        {
+          Array(subDivision - 1).map(() => (
+            <View style={getLinesStyle()} />
+          ))
+        }
         <View style={{flex: 1}} />
       </View>
   );
 );
 
-export const PhotoGrid = (color: string = 'white') => (
+export const PhotoGrid: PhotoGridComponent = (color: string = 'white', subDivision: number = 3) => (
     return (
       <View style={absoluteFill} pointerEvents="none">
-        <Lines direction="row" color={color} />
-        <Lines direction="column" color={color} />
+        <Lines direction="row" color={color} subDivision={subDivision} />
+        <Lines direction="column" color={color} subDivision={subDivision} />
       </View>
     );
 )
