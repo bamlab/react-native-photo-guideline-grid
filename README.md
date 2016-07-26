@@ -6,13 +6,13 @@ A simple component to display a guideline grid according to Rule of thirds.
 
 ## Usage
 
-```
+```shell
 npm install react-native-photo-guideline-grid --save
 ```
 
 then use it in a component:
 
-```
+```js
 import PhotoGuidelineGrid from 'react-native-photo-guideline-grid';
 
 class MyView extends Component {
